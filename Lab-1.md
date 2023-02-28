@@ -36,6 +36,7 @@ istioctl x precheck
 kc create ns istio-system
 istioctl install --set components.cni.enabled=true
 kc -n istio-system get pods
+istioctl verify-install
 ```
 
 部署其周边组件
