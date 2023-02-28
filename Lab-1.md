@@ -125,4 +125,32 @@ grafana   LoadBalancer   10.96.140.128   131.186.33.86   3000:31311/TCP   12h
 ![image](https://user-images.githubusercontent.com/4653664/221782812-61002696-b133-4897-8462-f0cd38ef4527.png)
 
 
+日志系统接入(使用OCI Logging)
+
+创建动态组
+
+```
+instance.compartment.id='ocid1.compartment.oc1..aaaaaaaafqgbjumv6djs3xdbkq27gat2nyhtowzdfltiy42w2rthjuvpl46a'
+```
+
+创建policy
+
+```
+Allow dynamic-group applog to use log-content in compartment k8s
+```
+
+创建名为oke-app-logs的`Log Group`
+
+![image](https://user-images.githubusercontent.com/4653664/221799662-3852ed43-d252-4794-b631-e64f39b2fe64.png)
+
+创建名为oke-app-log的定制log
+
+![image](https://user-images.githubusercontent.com/4653664/221799953-3ab57c48-1126-4ce5-985c-882c91355dbd.png)
+
+创建名为oke-app-log的`agent config`
+
+![image](https://user-images.githubusercontent.com/4653664/221800460-9449f78f-0f0f-4f2a-aabf-220a79ba31eb.png)
+
+
+![image](https://user-images.githubusercontent.com/4653664/221800375-32ea82fa-e498-437a-8985-694da3470616.png)
 
