@@ -151,6 +151,8 @@ Allow dynamic-group applog to use log-content in compartment k8s
 
 ![image](https://user-images.githubusercontent.com/4653664/221800460-9449f78f-0f0f-4f2a-aabf-220a79ba31eb.png)
 
+查看`OCI Logging Search`
 
-![image](https://user-images.githubusercontent.com/4653664/221800375-32ea82fa-e498-437a-8985-694da3470616.png)
+![image](https://user-images.githubusercontent.com/4653664/221805362-df9a9381-fb88-4410-807f-d24f548b2559.png)
+
 
