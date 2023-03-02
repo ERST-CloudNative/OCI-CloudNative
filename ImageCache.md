@@ -1,7 +1,7 @@
 ## 镜像缓存实践
 
 
-1. 下载项目代码仓库
+### 1. 下载项目代码仓库
 
 ```
 [root@osstest2 ~]# git clone https://github.com/senthilrch/kube-fledged.git $HOME/kube-fledged
@@ -14,7 +14,7 @@ Receiving objects: 100% (10497/10497), 34.56 MiB | 16.13 MiB/s, done.
 Resolving deltas: 100% (4363/4363), done.
 ```
 
-2. 开始部署
+### 2. 开始部署
 ```
 [root@osstest2 ~]# cd kube-fledged/
 
@@ -60,14 +60,14 @@ kubefledged-controller-55f848cc67-2pnbz       1/1     Running   0          61s
 kubefledged-webhook-server-597dbf4ff5-grf98   1/1     Running   0          22s
 ```
 
-3. 验证是否部署成功
+### 3. 验证是否部署成功
 
 ```
 [root@osstest2 kube-fledged]# kubectl get imagecaches -n kube-fledged
 No resources found in kube-fledged namespace.
 ```
 
-4. 创建imagecache
+### 4. 创建imagecache
 
 ```
 [root@osstest2 kube-fledged]# cat deploy/kubefledged-imagecache.yaml
@@ -122,7 +122,7 @@ us.gcr.io/k8s-artifacts-prod/etcd:3.5.4-0
 imagecache.kubefledged.io/imagecache1 created
 ```
 
-5. 查看`ImageCache`
+### 5. 查看`ImageCache`
 
 ```
 [root@osstest2 kube-fledged]# kubectl get imagecaches -n kube-fledged
@@ -177,7 +177,9 @@ imagecache1   17s
 }
 ```
 
-6. `ImageCache`刷新
+> 以上已经完成指定镜像的缓存，当部署应用时看可以实现快速加载镜像
+
+### 6. `ImageCache`刷新
 
 ```
 [root@osstest2 kube-fledged]# kubectl annotate imagecaches imagecache1 -n kube-fledged kubefledged.io/refresh-imagecache=
@@ -230,7 +232,7 @@ imagecache.kubefledged.io/imagecache1 annotated
     }
 }
 ```
-7. 删除`ImageCache`
+### 7. 删除`ImageCache`
 
 ```
 [root@osstest2 kube-fledged]# kubectl annotate imagecaches imagecache1 -n kube-fledged kubefledged.io/purge-imagecache=
