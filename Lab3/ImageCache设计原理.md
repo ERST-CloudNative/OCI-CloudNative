@@ -31,6 +31,7 @@
 
 ### 6.高层次设计
 
+![image](https://user-images.githubusercontent.com/4653664/222416797-a6ec5edf-f19f-4878-ab0a-27a9df6f7eb9.png)
 
 
 解决方案中提出的 `Cluster Image Cache` 将作为扩展 `API` 资源实现。这提供了使用 `Kubernetes` 风格的 `API` 管理（即 `CRUD` 操作）镜像缓存的优势。`Kubernetes` 提供了两种实现扩展 `API` 的机制，即扩展 `API` 服务器和自定义资源定义。我们将使用自定义资源定义 (CRD) 来实现扩展 API。
