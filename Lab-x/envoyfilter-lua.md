@@ -4,27 +4,27 @@
 1. 创建新的namespace 
 
 ```
-kubectl create ns istioinaction
-kubectl label namespace istioinaction istio-injection=enabled
+# kubectl create ns istioinaction
+# kubectl label namespace istioinaction istio-injection=enabled
 ```
 
 2. 部署待测试应用
 
 ```
-kubectl -n istioinaction apply -f httpbin.yaml
-kubectl -n istioinaction apply -f bucket-tester-service.yaml
-kubectl -n istioinaction apply -f sleep.yaml
+# kubectl -n istioinaction apply -f httpbin.yaml
+# kubectl -n istioinaction apply -f bucket-tester-service.yaml
+# kubectl -n istioinaction apply -f sleep.yaml
 ```
 3. 应用EnvoyFilter
 
 ```
-kubectl apply -f lua-filter.yaml
+# kubectl apply -f lua-filter.yaml
 ```
 
 4. 测试验证
 
 ```
-[root@osstest2 book-source-code]# kubectl -n istioinaction  exec -it deploy/sleep  -- curl -vv httpbin.istioinaction:8000/headers
+# kubectl -n istioinaction  exec -it deploy/sleep  -- curl -vv httpbin.istioinaction:8000/headers
 *   Trying 10.96.96.25:8000...
 * Connected to httpbin.istioinaction (10.96.96.25) port 8000 (#0)
 > GET /headers HTTP/1.1
