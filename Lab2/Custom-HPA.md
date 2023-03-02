@@ -5,17 +5,18 @@
 由于OKE默认没有安装Promethes,所以这里全量按照Prometheus相关组件，包括Prometheus、prometheus-adapter、alertmanager、grafana等
 
 ```
-[root@osstest2 hpa]# git clone https://github.com/prometheus-operator/kube-prometheus.git
+# git clone https://github.com/prometheus-operator/kube-prometheus.git
 
-[root@osstest2 hpa]# cd kube-prometheus/
+# cd kube-prometheus/
 
-[root@osstest2 kube-prometheus]# kubectl create -f manifests/setup
+# kubectl create -f manifests/setup
 
-[root@osstest2 kube-prometheus]# until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo ""; done
+# until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo ""; done
 
-[root@osstest2 kube-prometheus]# kubectl create -f manifests/
+# kubectl create -f manifests/
 
-[root@osstest2 kube-prometheus]# kubectl -n monitoring get pods
+# kubectl -n monitoring get pods
+
 NAME                                   READY   STATUS    RESTARTS       AGE
 alertmanager-main-0                    2/2     Running   0              100m
 alertmanager-main-1                    2/2     Running   1 (100m ago)   100m
@@ -36,5 +37,16 @@ prometheus-operator-65ff8b668d-r9q42   2/2     Running   0              101m
 
 ### 2. 部署应用
 
+```
+# kubectl create -f sample-app.deploy.yaml
+# kubectl create -f sample-app.service.yaml
+```
 
+```
+# kubectl exec php-apache-5c6bb5b468-5x4vz -i -t -- /bin/sh
+sh-4.4# curl http://10.244.1.6:8080/metrics
+# HELP http_requests_total The amount of requests served by the server in total
+# TYPE http_requests_total counter
+http_requests_total 1
+```
 
