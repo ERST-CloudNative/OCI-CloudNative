@@ -63,6 +63,8 @@ http_requests_total 1
 $ kubectl create -f sample-app.monitor.yaml
 ```
 
+> ServiceMonitor是用来满足自定义服务发现的采集需求，对象是Service
+
 ### 4. 更新Prometheus Adapter配置
 
 ```
@@ -72,7 +74,9 @@ $ kubectl apply -f prom-adapter.config.yaml
 $ kubectl rollout restart deployment prometheus-adapter -n monitoring
 ```
 
-### 5. 将prometheus-adapter注册为定制指标API服务
+### 5. 注册定制指标API服务
+
+将prometheus-adapter注册为定制指标API服务
 
 ```
 $ kubectl create -f api-service.yaml
