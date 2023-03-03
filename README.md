@@ -6,5 +6,5 @@
 
 [Lab-3 镜像缓存(kube-fledged)](https://github.com/ERST-CloudNative/OCI-CloudNative/blob/main/Lab3/ImageCache.md)
 
-[Lab-4 ISTIO中EnvoyFilter应用实践](https://github.com/ERST-CloudNative/OCI-CloudNative/blob/main/Lab-x/envoyfilter-lua.md)
+[Lab-4 ISTIO中EnvoyFilter应用示例](https://github.com/ERST-CloudNative/OCI-CloudNative/blob/main/Lab-x/envoyfilter-lua.md)
 
