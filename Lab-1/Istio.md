@@ -5,47 +5,47 @@
 下载istio
 
 ```
-curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.17.1 TARGET_ARCH=x86_64 sh -
-export PATH="$PATH:/root/istio-1.17.1/bin"
+# curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.17.1 TARGET_ARCH=x86_64 sh -
+# export PATH="$PATH:/root/istio-1.17.1/bin"
 ```
 
 获取OKE集群的访问配置
 
 ```
-oci ce cluster create-kubeconfig --cluster-id ocid1.cluster.oc1.ap-tokyo-1.XXXXX --file $HOME/.kube/config --region ap-tokyo-1 --token-version 2.0.0  --kube-endpoint PUBLIC_ENDPOINT
+# oci ce cluster create-kubeconfig --cluster-id ocid1.cluster.oc1.ap-tokyo-1.XXXXX --file $HOME/.kube/config --region ap-tokyo-1 --token-version 2.0.0  --kube-endpoint PUBLIC_ENDPOINT
 ```
 
 下载Kubectl
 
 ```
-curl -LO https://dl.k8s.io/release/v1.25.4/bin/linux/amd64/kubectl
-chmod +x kubectl
-cp kubectl /usr/bin/
+# curl -LO https://dl.k8s.io/release/v1.25.4/bin/linux/amd64/kubectl
+# chmod +x kubectl
+# cp kubectl /usr/bin/
 ```
 
 验证集群与环境是否就绪
 
 ```
-kc get node
-istioctl x precheck
+# kubectl get node
+# istioctl x precheck
 ```
 
 ### 2. 部署istio
 
 ```
-kc create ns istio-system
-istioctl install --set components.cni.enabled=true
-kc -n istio-system get pods
-istioctl verify-install
+# kubectl create ns istio-system
+# istioctl install --set components.cni.enabled=true
+# kubectl -n istio-system get pods
+# istioctl verify-install
 ```
 
 部署其周边组件
 
 ```
-kubectl apply -f samples/addons/prometheus.yaml
-kubectl apply -f samples/addons/grafana.yaml
-kubectl apply -f samples/addons/jaeger.yaml
-kubectl apply -f samples/addons/kiali.yaml
+# kubectl apply -f samples/addons/prometheus.yaml
+# kubectl apply -f samples/addons/grafana.yaml
+# kubectl apply -f samples/addons/jaeger.yaml
+# kubectl apply -f samples/addons/kiali.yaml
 ```
 
 ### 3. 应用部署
@@ -53,21 +53,21 @@ kubectl apply -f samples/addons/kiali.yaml
 使能istio自动注入
 
 ```
-kubectl label namespace default istio-injection=enabled
+# kubectl label namespace default istio-injection=enabled
 ```
 
 部署示例应用
 
 ```
-kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
-kubectl apply -f samples/bookinfo/platform/kube/bookinfo-ingress.yaml
+# kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
+# kubectl apply -f samples/bookinfo/platform/kube/bookinfo-ingress.yaml
 ```
 
 访问应用
 
 ```
 # 获取istio gateway 公网IP地址
-[root@osstest2 istio-1.17.1]# kc -n istio-system get svc istio-ingressgateway
+[root@osstest2 istio-1.17.1]# kubectl -n istio-system get svc istio-ingressgateway
 NAME                   TYPE           CLUSTER-IP      EXTERNAL-IP    PORT(S)                                      AGE
 istio-ingressgateway   LoadBalancer   10.96.126.197   140.83.33.77   15021:30306/TCP,80:32192/TCP,443:31359/TCP   11h
 
@@ -83,9 +83,9 @@ istio-ingressgateway   LoadBalancer   10.96.126.197   140.83.33.77   15021:30306
 
 ```
 # 修改type: LoadBalancer
-[root@osstest2 istio-1.17.1]# kc -n istio-system edit svc kiali
+[root@osstest2 istio-1.17.1]# kubectl -n istio-system edit svc kiali
 
-[root@osstest2 istio-1.17.1]# kc -n istio-system get svc kiali
+[root@osstest2 istio-1.17.1]# kubectl -n istio-system get svc kiali
 NAME    TYPE           CLUSTER-IP     EXTERNAL-IP       PORT(S)                          AGE
 kiali   LoadBalancer   10.96.14.110   155.248.179.191   20001:30608/TCP,9090:32163/TCP   11h
 
@@ -98,7 +98,7 @@ kiali   LoadBalancer   10.96.14.110   155.248.179.191   20001:30608/TCP,9090:321
 
 ```
 # 修改type: LoadBalancer
-[root@osstest2 istio-1.17.1]# kc -n istio-system edit svc kiali
+[root@osstest2 istio-1.17.1]# kubectl -n istio-system edit svc kiali
 
 [root@osstest2 istio-1.17.1]# kc -n istio-system get svc grafana
 NAME      TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)          AGE
