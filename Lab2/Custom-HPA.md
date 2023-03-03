@@ -2,7 +2,7 @@
 
 ### 1. 部署Prometheus Adapter
 
-由于OKE默认没有安装Promethes,所以这里全量按照Prometheus相关组件，包括Prometheus、prometheus-adapter、alertmanager、grafana等
+由于OKE默认没有安装Prometheus,所以这里全量按照Prometheus相关组件，包括Prometheus、prometheus-adapter、alertmanager、grafana等
 
 ```
 $ git clone https://github.com/prometheus-operator/kube-prometheus.git
