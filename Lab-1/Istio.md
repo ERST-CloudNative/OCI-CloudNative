@@ -98,9 +98,9 @@ kiali   LoadBalancer   10.96.14.110   155.248.179.191   20001:30608/TCP,9090:321
 
 ```
 # 修改type: LoadBalancer
-[root@osstest2 istio-1.17.1]# kubectl -n istio-system edit svc kiali
+[root@osstest2 istio-1.17.1]# kubectl -n istio-system edit svc grafana
 
-[root@osstest2 istio-1.17.1]# kc -n istio-system get svc grafana
+[root@osstest2 istio-1.17.1]# kubectl -n istio-system get svc grafana
 NAME      TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)          AGE
 grafana   LoadBalancer   10.96.140.128   131.186.33.86   3000:31311/TCP   12h
 
