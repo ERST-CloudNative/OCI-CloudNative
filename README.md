@@ -8,4 +8,4 @@
 
 [Lab-4 ISTIO中EnvoyFilter应用示例](https://github.com/ERST-CloudNative/OCI-CloudNative/blob/main/Lab-x/envoyfilter-lua.md)
 
-[Lab-5 在OKE中使用自签名证书的Harbor仓库](https://github.com/ERST-CloudNative/OCI-CloudNative/blob/main/Lab5/在OKE中使用自签名证书的Harbor仓库.md)
+[Lab-5 在OKE中使用自签名证书的Harbor仓库](https://github.com/ERST-CloudNative/OCI-CloudNative/blob/main/Lab5/%E5%9C%A8OKE%E4%B8%AD%E4%BD%BF%E7%94%A8%E8%87%AA%E7%AD%BE%E5%90%8D%E7%9A%84Harbor.md)
